@@ -1,28 +1,11 @@
-# Serving HTML
+# 01 Serving HTML Exercises
 
-## 1 How does a web browser work?
+## 1 Write a web server that serves files
 
-1. Gets a URL: `http://localhost:3000/`
-2. Resolves the DNS name (`localhost`) to `127.0.0.1`
-3. Opens a TCP connection to `127.0.0.1`, to port `3000`
-4. Writes an HTTP request to it:
-
-```
-GET / HTTP/1.1
-Header1: ...
-Header2: ...
-
-```
-5. Notice the empty line, which says that it's time to respond
-6. The server responds with a response whose body includes HTML:
-
-```
-HTTP/1.1 200 OK
-Content-Length: nnn
-
-<html><body>Hello, world</body></html>
-```
-
-## 2 Writing a web server (`01-web-server.js`)
-
-This server always returns the same HTML to the browser
+1. Goto `src/01-server.x.js` and modify it so that it will serve the files under public, based
+   on the path in HTTP
+1. While you can test it using `npm test`, the best way to initially test it is to run
+   `node ./src/01-server.x.js` and goto `http://localhost:3000/` in the browser to see if the two
+   pages are being served correctly.
+1. You can add `--watch` to the command line to make the server restart every time you change the source code
+1. Finally, run `npm test` to ensure that the code is correct
