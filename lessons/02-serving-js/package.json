@@ -12,16 +12,18 @@
     "start:04": "serve public/04-serving-common-js-badly",
     "start:05": "serve public/05-serving-common-js-goodly",
     "start:06": "serve public/06-todomvc",
-    "test": "node --test test"
+    "test": "playwright test"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "@playwright/test": "^1.40.1",
     "@types/node": "^20.10.6",
     "execa": "^8.0.1",
     "expect": "^29.7.0",
     "p-retry": "^6.2.0",
+    "playwright": "^1.40.1",
     "serve": "^14.2.1"
   },
   "dependencies": {

@@ -4,13 +4,19 @@
   "description": "A workshop teaching frontend from first principles",
   "main": "index.js",
   "scripts": {
-    "postinstall": "npm run install:01",
+    "postinstall": "concurrently 'npm:install:*'",
     "install:01": "cd lessons/01-serving-html && npm install",
-    "test": "npm run test:01 && npm run test:01:solved",
+    "install:01:solved": "cd exercises-solved/01-serving-html-exs && npm install",
+    "test": "concurrently 'npm:test:*'",
     "test:01": "cd lessons/01-serving-html && npm test",
-    "test:01:solved": "cd exercises-solved/01-serving-html && npm test"
+    "test:01:solved": "cd exercises-solved/01-serving-html-exs && npm test",
+    "test:02": "cd lessons/02-serving-js && npm test",
+    "test:02:solved": "cd exercises-solved/01-serving-js-exs && npm test"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
 }
