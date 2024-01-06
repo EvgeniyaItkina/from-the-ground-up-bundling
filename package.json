@@ -11,6 +11,7 @@
     "test:01": "cd lessons/01-serving-html && npm test",
     "test:01:solved": "cd exercises-solved/01-serving-html-exs && npm test",
     "test:02": "cd lessons/02-serving-js && npm test",
+    "test:02:ex": "cd lessons/02-serving-js-ex && npm test",
     "test:02:solved": "cd exercises-solved/01-serving-js-exs && npm test"
   },
   "keywords": [],

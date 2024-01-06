@@ -11,6 +11,12 @@
 		},
 		{
 			"path": "lessons/02-serving-js"
+		},
+		{
+			"path": "exercises/02-serving-js-ex"
+		},
+		{
+			"path": "exercises-solved/02-serving-js-exs"
 		}
 	],
 	"settings": {}
