@@ -1,0 +1,31 @@
+{
+  "name": "02-serving-js",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start:01": "serve public/01-serving-script-js",
+    "start:02": "serve public/02-serving-script-defer-js",
+    "start:03": "serve public/03-serving-script-module-js",
+    "start:04": "serve public/04-serving-common-js-badly",
+    "start:05": "serve public/05-serving-common-js-goodly",
+    "start:06": "serve public/06-todomvc",
+    "test": "node --test test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.10.6",
+    "execa": "^8.0.1",
+    "expect": "^29.7.0",
+    "p-retry": "^6.2.0",
+    "serve": "^14.2.1"
+  },
+  "dependencies": {
+    "randoquoter": "^1.2.0",
+    "three": "^0.160.0"
+  }
+}
