@@ -6,6 +6,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
+    "postinstall": "ln-j -sf ../../node_modules public/03-serving-script-module-js",
     "start:01": "serve public/01-serving-script-js",
     "start:02": "serve public/02-serving-script-defer-js",
     "start:03": "serve public/03-serving-script-module-js",
@@ -20,6 +21,7 @@
   "devDependencies": {
     "@playwright/test": "^1.40.1",
     "@types/node": "^20.10.6",
+    "@unixcompat/ln.js": "^2.0.3",
     "execa": "^8.0.1",
     "expect": "^29.7.0",
     "p-retry": "^6.2.0",

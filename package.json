@@ -6,23 +6,25 @@
   "scripts": {
     "postinstall": "concurrently 'npm:install:*'",
     "install:01": "cd lessons/01-serving-html && npm install",
-    "install:01:solved": "cd exercises-solved/01-serving-html-exs && npm install",
+    "install:01:exs": "cd exercises-solved/01-serving-html-exs && npm install",
     "install:02": "cd lessons/02-serving-js && npm install",
-    "install:02:ex": "cd exercises-solved/02-serving-js-exs && npm install",
-    "install:02:solved": "cd exercises-solved/02-serving-js-exs && npm install",
+    "install:02:ex": "cd exercises/02-serving-js-ex && npm install",
+    "install:02:exs": "cd exercises-solved/02-serving-js-exs && npm install",
     "test": "concurrently -m 1 'npm:test:*'",
     "test:01": "cd lessons/01-serving-html && npm test",
-    "test:01:solved": "cd exercises-solved/01-serving-html-exs && npm test",
+    "test:01:exs": "cd exercises-solved/01-serving-html-exs && npm test",
     "test:02": "cd lessons/02-serving-js && npm test",
     "test:02:ex": "cd exercises/02-serving-js-ex && npm test",
-    "test:02:solved": "cd exercises-solved/02-serving-js-exs && npm test",
-    "clean": "rimraf \"./**/node_modules\""
+    "test:02:exs": "cd exercises-solved/02-serving-js-exs && npm test",
+    "clean": "rm-j -rf \"./**/node_modules\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^8.2.2",
-    "rimraf": "^5.0.5"
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "@unixcompat/rm.js": "^3.0.0"
   }
 }
