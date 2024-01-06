@@ -7,12 +7,12 @@
     "postinstall": "concurrently 'npm:install:*'",
     "install:01": "cd lessons/01-serving-html && npm install",
     "install:01:solved": "cd exercises-solved/01-serving-html-exs && npm install",
-    "test": "concurrently 'npm:test:*'",
+    "test": "concurrently -m 1 'npm:test:*'",
     "test:01": "cd lessons/01-serving-html && npm test",
     "test:01:solved": "cd exercises-solved/01-serving-html-exs && npm test",
     "test:02": "cd lessons/02-serving-js && npm test",
-    "test:02:ex": "cd lessons/02-serving-js-ex && npm test",
-    "test:02:solved": "cd exercises-solved/01-serving-js-exs && npm test"
+    "test:02:ex": "cd exercises/02-serving-js-ex && npm test",
+    "test:02:solved": "cd exercises-solved/02-serving-js-exs && npm test"
   },
   "keywords": [],
   "author": "",
