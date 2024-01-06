@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "lessons/01-serving-html"
+		},
+		{
+			"path": "exercises/01-serving-html-ex"
+		},
+		{
+			"path": "exercises-solved/01-serving-html-exs"
+		},
+		{
+			"path": "lessons/02-serving-js"
+		}
+	],
+	"settings": {}
+}
