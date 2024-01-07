@@ -1,6 +1,6 @@
-# 01 Serving HTML Exercises
+# 01-  Serving HTML Exercises
 
-## 1 Write a web server that serves files
+## 1 - Write a web server that serves files
 
 1. Goto `src/01-server.x.js` and modify it so that it will serve the files under public, based
    on the path in HTTP

@@ -1,4 +1,4 @@
-# 01 Serving JavaScript Exercises
+# 01 - Serving JavaScript Exercises
 
 ## 1 - Make the TodoMVC code load in parallel
 

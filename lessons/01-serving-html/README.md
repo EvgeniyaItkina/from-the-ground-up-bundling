@@ -1,6 +1,6 @@
-# Serving HTML
+# 1 - Serving HTML
 
-## 1 How does a web browser work?
+## 1 - How does a web browser work?
 
 1. Gets a URL: `http://localhost:3000/`
 2. Resolves the DNS name (`localhost`) to `127.0.0.1`
@@ -23,6 +23,10 @@ Content-Length: nnn
 <html><body>Hello, world</body></html>
 ```
 
-## 2 Writing a web server (`01-web-server.js`)
+## 2 - Writing a web server (`01-web-server.js`)
 
 This server always returns the same HTML to the browser
+
+## Exercises
+
+Find the exercises [here](../../exercises/01-serving-html-ex/README.md)

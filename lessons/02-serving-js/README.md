@@ -1,4 +1,4 @@
-# Serving JavaScript
+# 02 - Serving JavaScript
 
 * TodoMVC code copied (and modified) from [1Marc](https://github.com/1Marc/modern-todomvc-vanillajs). Thanks!
 
@@ -116,3 +116,7 @@ This code is not allowed to use ESM `import/export`. For ESM, we have a new type
       ```
 
       and not the other way around.
+
+## Exercises
+
+Find the exercises [here](../../exercises/02-serving-js-ex/README.md)
