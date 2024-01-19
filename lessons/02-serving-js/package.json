@@ -22,10 +22,6 @@
     "@playwright/test": "^1.40.1",
     "@types/node": "^20.10.6",
     "@unixcompat/ln.js": "^2.0.3",
-    "execa": "^8.0.1",
-    "expect": "^29.7.0",
-    "p-retry": "^6.2.0",
-    "playwright": "^1.40.1",
     "serve": "^14.2.1"
   },
   "dependencies": {
