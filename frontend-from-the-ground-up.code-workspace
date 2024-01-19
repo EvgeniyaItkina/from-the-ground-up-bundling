@@ -17,6 +17,9 @@
 		},
 		{
 			"path": "exercises-solved/02-serving-js-exs"
+		},
+		{
+			"path": "lessons/03-adding-lint"
 		}
 	],
 	"settings": {}
