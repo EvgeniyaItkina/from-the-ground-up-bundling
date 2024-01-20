@@ -6,6 +6,7 @@ A workshop teaching frontend from first principles
 
 1. [Serving HTML](./lessons/01-serving-html/README.md): how a browser shows an HTML page and how a server serves it.
 1. [Serving JavaScript](./lessons/02-serving-js/README.md): the various ways a browser loads and executes JavaScript.
+1. [Adding ESLint](./lessons/03-adding-lint/README.md): add static analysis testing to our code.
 
 ## Navigating the VSCode workspace
 
