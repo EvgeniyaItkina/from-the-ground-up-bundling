@@ -63,3 +63,12 @@ the flat configuration in this course because (i) it really is nicer, and (ii) t
   with browser globals
   - You can see this in our ESlint
 - But many times you have more than one of these: for example, Jest files need their own configuration and rules
+
+## 5 ESLint is a test
+
+- The way I view it, there is nothing different between Prettier, ESLint, PlayWright, and Jest. They are all
+  tests. Which is why I want `npm test` to run them.
+- The way I do it is simple:
+  - Have `test:eslint` and `test:playwright` and others
+  - Use `concurrently` to run all the "test:*" scripts
+  - Voila! Instant and simple build system
