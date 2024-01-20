@@ -72,3 +72,8 @@ the flat configuration in this course because (i) it really is nicer, and (ii) t
   - Have `test:eslint` and `test:playwright` and others
   - Use `concurrently` to run all the "test:*" scripts
   - Voila! Instant and simple build system
+
+
+## Exercises
+
+Find the exercises [here](../../exercises/03-adding-lint-ex/README.md)
