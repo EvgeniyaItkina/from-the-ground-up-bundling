@@ -19,7 +19,12 @@
     "install:02:ex": "cd exercises/02-serving-js-ex && npm install",
     "test:02:ex": "cd exercises/02-serving-js-ex && npm test",
     "install:02:exs": "cd exercises-solved/02-serving-js-exs && npm install",
-    "test:02:exs": "cd exercises-solved/02-serving-js-exs && npm test"
+    "test:02:exs": "cd exercises-solved/02-serving-js-exs && npm test",
+    "//03": "",
+    "install:03": "cd lessons/03-adding-lint && npm install",
+    "install:03:ex": "cd exercises/03-adding-lint-ex && npm install",
+    "install:03:exs": "cd exercises-solved/03-adding-lint-exs && npm install",
+    "test:03:exs": "cd exercises-solved/03-adding-lint-exs && npm test"
   },
   "keywords": [],
   "author": "",
