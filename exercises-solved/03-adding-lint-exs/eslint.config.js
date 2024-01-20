@@ -1,15 +1,16 @@
 import globals from 'globals'
 import js from '@eslint/js'
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 
 export default [
   js.configs.recommended,
-  {},
+  eslintPluginPrettierRecommended,
   {
     files: ['public/**/*.js'],
+    languageOptions: {globals: globals.browser},
     rules: {
       'no-unused-vars': ['error', {argsIgnorePattern: '^_'}],
     },
-    languageOptions: {globals: globals.browser},
   },
   {
     files: ['eslint.config.js', 'playwright.config.js', 'test/**/*.js'],
