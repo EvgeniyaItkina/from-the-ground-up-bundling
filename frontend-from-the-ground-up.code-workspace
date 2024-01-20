@@ -20,6 +20,12 @@
 		},
 		{
 			"path": "lessons/03-adding-lint"
+		},
+		{
+			"path": "exercises/03-adding-lint-ex"
+		},
+		{
+			"path": "exercises-solved/03-adding-lint-exs"
 		}
 	],
 	"settings": {}

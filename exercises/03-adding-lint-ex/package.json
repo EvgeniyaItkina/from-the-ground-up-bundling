@@ -1,0 +1,24 @@
+{
+  "name": "02-serving-js",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "serve public",
+    "test": "concurrently \"npm:test:*\"",
+    "test:playwright": "playwright test",
+    "test:eslint": "eslint ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.41.0",
+    "@types/node": "^20.11.5",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.56.0",
+    "serve": "^14.2.1"
+  }
+}
