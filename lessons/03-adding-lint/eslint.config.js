@@ -6,7 +6,9 @@ export default [
   {
     files: ['public/**/*.js'],
     languageOptions: {globals: globals.browser},
-    rules: add at least one rule here to make it clear how this works
+    rules: {
+      'no-constructor-return': 'error',
+    },
   },
   {
     files: ['eslint.config.js', 'playwright.config.js', 'test/**/*.js'],

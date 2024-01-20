@@ -22,6 +22,7 @@ export const TodoStore = class extends EventTarget {
         : filter === 'completed'
         ? this.todos.filter((todo) => todo.completed)
         : this.todos
+    return
   }
   _readStorage() {
     this.todos = JSON.parse(window.localStorage.getItem(this.localStorageKey) || '[]')

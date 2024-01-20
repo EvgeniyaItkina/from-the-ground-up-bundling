@@ -9,6 +9,7 @@ export default [
     files: ['public/**/*.js'],
     languageOptions: {globals: globals.browser},
     rules: {
+      'no-constructor-return': 'error',
       'no-unused-vars': ['error', {argsIgnorePattern: '^_'}],
     },
   },
