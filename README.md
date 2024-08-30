@@ -6,19 +6,18 @@ A workshop teaching frontend from first principles
 
 1. [Serving HTML](./lessons/01-serving-html/README.md): how a browser shows an HTML page and how a server serves it
 1. [Serving JavaScript](./lessons/02-serving-js/README.md): the various ways a browser loads and executes JavaScript
-1. [Serving CSS and images](./lessons/03-serving-resources/README.md): how a browser loads and applies CSS
-1. [Adding ESLint](./lessons/04-adding-lint/README.md): add static analysis testing to our code
-1. [Supporting Typescript](./lessons/05-supporting-ts/README.md): add TypeScript to our project
-1. [Bundling code](./lessons/06-bundling/README.md): how to bundle our code for the browser, as an alternative
+1. [Adding ESLint](./lessons/03-adding-lint/README.md): add static analysis testing to our code
+1. [Supporting Typescript](./lessons/04-supporting-ts/README.md): add TypeScript to our project
+1. [Bundling code](./lessons/07-bundling/README.md): how to bundle our code for the browser, as an alternative
    to native ESM modules
-1. [CSS Modules](./lessons/07-css-modules/README.md): how to use CSS modules to scope our CSS
-1. [Bundling resources](./lessons/08-bundling-resources/README.md): how to bundle our resources (images, fonts, etc.)
+1. [CSS Modules](./lessons/08-css-modules/README.md): how to use CSS modules to scope our CSS
+1. [Bundling resources](./lessons/09-bundling-resources/README.md): how to bundle our resources (images, fonts, etc.)
    using bundlers
-1. [Node.js and modules](./lessons/09-node-modules/README.md): how Node.js runs code and imports ESM and CJS
-1. [Node.js and JSDOM](./lessons/10-node-jsdom/README.md): how to use JSDOM to run frontend code in Node.js
-1. [Unit testing](./lessons/11-unit-testing/README.md): how to write and run unit tests for our code, using Node:test
-1. [Vitest](./lessons/12-vitest/README.md): Vitest and why use it
-1. [integration testing](./lessons/12-integration-testing/README.md): how to write and run integration
+1. [Node.js and modules](./lessons/10-node-modules/README.md): how Node.js runs code and imports ESM and CJS
+1. [Node.js and JSDOM](./lessons/11-node-jsdom/README.md): how to use JSDOM to run frontend code in Node.js
+1. [Unit testing](./lessons/12-unit-testing/README.md): how to write and run unit tests for our code, using Node:test
+1. [Vitest](./lessons/13-vitest/README.md): Vitest and why use it
+1. [integration testing](./lessons/14-integration-testing/README.md): how to write and run integration
    tests using Playwright
 
 ## Navigating the VSCode workspace
