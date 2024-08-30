@@ -1,11 +1,15 @@
 import {test, expect} from '@playwright/test'
 
-test('06-todomvc', theTest())
-test('06-todomvc (bundled)', theTest('?bundled'))
+// This test passes even here because it's very difficult to test parallelism
+test('06-todomvc', theTest(false))
+test('06-todomvc (bundled)', theTest(true))
 
-function theTest(urlSuffix) {
+function theTest(isBundled) {
   return async ({page}) => {
-    await page.goto(`http://localhost:3000/06-todomvc/${urlSuffix ? urlSuffix : ''}`)
+    const networkEvents = [];
+    page.on('request', request => networkEvents.push(request.url()))
+
+    await page.goto(`http://localhost:3000/06-todomvc/${isBundled ? '?bundled' : ''}`)
 
     await expect(page.getByRole('heading')).toContainText('todos')
 
@@ -36,6 +40,12 @@ function theTest(urlSuffix) {
     await expect(page.getByText('Clean dishes')).toBeVisible()
     await expect(page.getByText('Do laundry')).toHaveCount(0)
     await expect(page.getByText('Be good')).toBeVisible()
+
+    if (isBundled) {
+      expect(networkEvents).not.toContainEqual(expect.stringMatching(/app\.js/))
+    } else {
+      expect(networkEvents).toContainEqual(expect.stringMatching(/app\.js/))
+    }
   }
 }
 

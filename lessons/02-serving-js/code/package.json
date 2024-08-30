@@ -6,7 +6,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "postinstall": "ln-j -sf ../../node_modules public/03-serving-script-module-js",
+    "postinstall": "ln -sf ../../node_modules public/03-serving-script-module-js && ln -sf ../../node_modules public/04-serving-common-js-badly",
     "start:01": "serve public/01-serving-script-js",
     "start:02": "serve public/02-serving-script-defer-js",
     "start:03": "serve public/03-serving-script-module-js",
@@ -19,13 +19,12 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@playwright/test": "^1.40.1",
-    "@types/node": "^20.10.6",
-    "@unixcompat/ln.js": "^2.0.3",
-    "serve": "^14.2.1"
+    "@playwright/test": "^1.46.1",
+    "@types/node": "^22.5.1",
+    "serve": "^14.2.3"
   },
   "dependencies": {
     "randoquoter": "^1.2.0",
-    "three": "^0.160.0"
+    "three": "^0.168.0"
   }
 }

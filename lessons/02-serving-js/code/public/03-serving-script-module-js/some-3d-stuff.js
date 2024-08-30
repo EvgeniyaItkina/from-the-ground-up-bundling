@@ -18,6 +18,7 @@ scene.add(mesh)
 
 const renderer = new THREE.WebGLRenderer({antialias: true})
 renderer.setSize(width, height)
+renderer.setClearAlpha(0);
 renderer.setAnimationLoop(animation)
 
 export const domElement = renderer.domElement

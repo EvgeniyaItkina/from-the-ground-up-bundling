@@ -8,15 +8,21 @@
 1. The browser parses the HTML, displaying it incrementally
 1. The browser finds a `<script src="..."></script>`
 1. The browser fetches the code, parses it, and executes it
-1. When the execution is done, the browser continues parsing the HTML
+1. In this case, the execution is very slow because it's doing some horrible math calculation
+1. During that time, nothing is displayed because the HTML isn't done parsing
+1. When the execution is done, the browser continues parsing the HTML and renders the page
 
-## 2 - Serving script using `defer`
+## 2 - Serving script using `async` or `defer`
 
 1. Run `npm run start:02` to see this in action. Code is in `public/01-serving-script-defer`
 1. This is usually not what we want, so we can add `defer` or `async` to the `<script>` to make the browser
    do them asynchronously.
-   * `async`: download and parse it asyncronously, and execute when ready
-   * `defer`: same, but execute only after DOM is downloaded and ready. This is probably what you usually want
+   * `async`: download and parse it asyncronously, and execute when ready.
+     Make sure that when you need to manipulate the DOM, you do it after the DOM is ready.
+   * `defer`: same, but execute only after DOM is downloaded and ready.
+     The script will not block the parsing of the HTML but will still block the rendering of the page
+     until it's done, so if you have a slow script, you might want to run it under a `setTimeout(..., 0)`.
+1. The sample code uses `defer`.
 
 This is for "script" code, which is the old code that does not support ESM.
 This code is not allowed to use ESM `import/export`. For ESM, we have a new type of script: "module".
@@ -29,27 +35,8 @@ This code is not allowed to use ESM `import/export`. For ESM, we have a new type
 1. Now this JavaScript can use `import` and `export`
 1. Note how the `script` tag imports a local file, and this one imports from `node_modules`, because 3D
    is tough!
-1. Importantly, the NPM package `three` is also an ESM package! This is getting less and less rare.
-1. How did I know to import this particular file (`/build/three.module.js`)? Did I geuess it?
-1. No! I looked in the `package.json` of the package, and saw these:
-   *
-   ```js
-      "main": "./build/three.js",
-      "module": "./build/three.module.js",
-      "exports": {
-      ".": {
-         "import": "./build/three.module.js",
-         "require": "./build/three.cjs"
-      },
-   ```
-
-   * `main` is the old way to say what file is the entry point. Note that it points to a different (non-ESM) file
-   * `module` is also the old way to say what file is the entry point for _ESM_.
-   * `exports` is the new way to do things, and there you can specify for each entry point
-     (yes, you can have multiple of those!) what is the entry point
-   * So I looked at `exports`, and chose the `import` condition, and... voila!
-   * Who else looks at these fields? Node.js ignores `module` but does look at the others. Also Parcel and WebPack and
-     Vite.
+1. Importantly, the NPM package `three` is also an ESM package, so it can also be served by the browser!
+1. This is getting less and less rare.
 
 ## 4 - Failing to serve a CommonJS package
 
@@ -68,10 +55,11 @@ This code is not allowed to use ESM `import/export`. For ESM, we have a new type
 1. Browsers don't understand CJS, which is one reason we're all migrating to ESM.
 1. Note how CJS does not require file extensions, while browser ESM does.
 1. If we try to use a CJS package, we will get an error.
+1. The error is because the `index.js` we're importing does not get the `export` that the browser needs
+1. It doesn't because it's a CJS script that does not use `export` but rather `module.exports`.
 1. The error is interesting, because we're not getting a runtime error that `module.exports` doesn't exist.
    * THe CJS code isn't even run!
    * THis is because ESM parses the file and binds the import/exports even before the execution of the code.
-1. If you w
 
 ## 5 - Serving a CommonJS package
 
@@ -87,7 +75,7 @@ This code is not allowed to use ESM `import/export`. For ESM, we have a new type
 
 1. Run `npm run start:06` to see this in action. Code is in `public/06-todomvc`.
 1. This is a "real" application that uses JavaScript with ESM. It's Vanilla JS, so it can just work in the browser
-   without any tooling. Next lesson, we'll translate this to TypeScript and see how to deal with that!
+   without any tooling.
 1. Note also the network tab: it first loads the HTML and then `app.js` and
    then simultaneously `helper.js` and `store.js`.
 1. So `import`-s are not "executed" serially: if they were, we would have seen them load sequentially.
@@ -119,4 +107,27 @@ This code is not allowed to use ESM `import/export`. For ESM, we have a new type
 
 ## Exercises
 
-Find the exercises [here](../../exercises/02-serving-js-ex/README.md)
+### 1 - Make the TodoMVC code load in parallel
+
+1. First, let's see how the code is loaded and parsed serially:
+   1. Run `npm start` and navigate to `http://localhost:3000`
+   1. Goto the "Performance" tab in the devtools and hit the reload button there to start recording performance
+   1. Stop the recording after a few seconds and view the result
+   1. Notice how the `app.js` is loaded and then in parallel the `helper.js` and `store.js` are loaded
+
+1. Now let's change it to serial execution. How? By changing all `import` declarations to use `await import`
+   1. Change all imports to use `await import`. So `import {TodoStore} from './store.js'` becomes
+      `const {TodoStore} = await import('./store.js')`.
+   1. Check yourself by running `npm start` or `npm test`
+   1. Now run the performance check again and see that the load is executed _serially_
+
+
+### 2 - Be a bundler
+
+1. Let's be a bundler! Let's have the app be in one JS file.
+1. Do that, in whatever way you want, and change the `index.html` to use that
+   * Can you make it so that you can use either with bundling and
+     without bundling by adding a query parameter `?bundled`?
+1. That's it! You're doing exactly what a bundler does.
+1. Check yourself by running `npm start` or `npm test`
+
