@@ -33,7 +33,7 @@ const App = {
         `
 				<strong>${count}</strong>
 				${count === 1 ? 'item' : 'items'} left
-			`,
+			`
       )
     },
   },
@@ -50,10 +50,10 @@ const App = {
         App.$.input.value = ''
       }
     })
-    App.$.toggleAll.addEventListener('click', (e) => {
+    App.$.toggleAll.addEventListener('click', () => {
       Todos.toggleAll()
     })
-    App.$.clear.addEventListener('click', (e) => {
+    App.$.clear.addEventListener('click', () => {
       Todos.clearCompleted()
     })
     App.bindTodoEvents()
@@ -82,7 +82,7 @@ const App = {
         document.activeElement.blur()
       }
     })
-    App.todoEvent('focusout', '[data-todo="edit"]', (todo, $li, e) => {
+    App.todoEvent('focusout', '[data-todo="edit"]', (todo, $li) => {
       if ($li.classList.contains('editing')) {
         App.render()
       }
@@ -103,7 +103,7 @@ const App = {
 				<button class="destroy" data-todo="destroy"></button>
 			</div>
 			<input class="edit" data-todo="edit">
-		`,
+		`
     )
     li.querySelector('[data-todo="label"]').textContent = todo.title
     li.querySelector('[data-todo="edit"]').value = todo.title

@@ -3,6 +3,9 @@ import {TodoStore} from './store.js'
 
 const Todos = new TodoStore('todo-modern-vanillajs')
 
+
+
+
 const App = {
   $: {
     input: document.querySelector('[data-todo="new"]'),
@@ -33,7 +36,7 @@ const App = {
         `
 				<strong>${count}</strong>
 				${count === 1 ? 'item' : 'items'} left
-			`
+			`,
       )
     },
   },
@@ -103,7 +106,7 @@ const App = {
 				<button class="destroy" data-todo="destroy"></button>
 			</div>
 			<input class="edit" data-todo="edit">
-		`
+		`,
     )
     li.querySelector('[data-todo="label"]').textContent = todo.title
     li.querySelector('[data-todo="edit"]').value = todo.title

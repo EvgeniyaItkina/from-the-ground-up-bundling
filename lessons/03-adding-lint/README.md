@@ -9,6 +9,10 @@
 
 - Installing ESlint is as simple as `npm install --save-dev eslint`
 - An alternative would be to use `npm init @eslint/config`, which also creates a lint configuration for you
+  - What is `npm init`? It is a way to create a new project with a specific template. For example, `npm init @vitejs/app`
+    creates a new Vite project. `npm init @eslint/config` creates a new ESLint configuration.
+  - How does it work? It downloads the package you specify and executes it. In our case, it downloads
+    `@eslint/create-config` and runs it (the `create` is added by the `npm init`). Nothing magical here.
 
 ## 3 Configuring ESLint
 
@@ -19,15 +23,20 @@ the flat configuration in this course because (i) it really is nicer, and (ii) t
 
 - The configuration for ESLint resides in a file named `eslint.config.js`. The existence of this file
   implies FlatConfig.
+
+### 3.1 ESM vs CommonJS
 - ESLint is a Node.js program. As such, it supports two module systems—CommonJS and ESM—just like any Node.js
   program.
 - Remember: CommonJS files use `require/module.exports` and ESM files use `import/export`.
 - In Node.js, a `.mjs` file means that it is ESM, and a `.cjs` file means that it is a CommonJS file, and `.js`
   is by default CommonJS, unless the `package.json` has a `type: module` property.
-- Ours has `type: module`, because this is the recommended way (by me!) to start new code in Node.js (and, as
+- Ours has `type: module`, because this is the recommended way today to start new code in Node.js (and, as
   we'll see, browser code). Why? Because it bares the most resemblance to how browsers see modules.
 - So our `eslint.config.js` is an ESM file, and so uses `export default` to export the configuration, and uses
   `import` to import various things it needs for configuration.
+
+## 4 How FlatConfig works
+
 - The idea behind flat config is this:
   - You export an array of "configuration objects".
   - The most important field in a configuration object is `files`, which specify which files this configuration applies
@@ -62,7 +71,8 @@ the flat configuration in this course because (i) it really is nicer, and (ii) t
 - So have at least two configurations: one for Node.js with Node.js globals and one for Browser files
   with browser globals
   - You can see this in our ESlint
-- But many times you have more than one of these: for example, Jest files need their own configuration and rules
+- But many times you have more than one of these: for example, Jest files need their own configuration and rules,
+  and Playwight tests are Node.js tests
 
 ## 5 ESLint is a test
 
@@ -73,7 +83,27 @@ the flat configuration in this course because (i) it really is nicer, and (ii) t
   - Use `concurrently` to run all the "test:*" scripts
   - Voila! Instant and simple build system
 
-
 ## Exercises
 
-Find the exercises [here](../../exercises/03-adding-lint-ex/README.md)
+## 1 - Solve the ESlint problems
+
+If you run `npm test` you will see that it fails because of linter bugs. (To focus on the eslint bugs, you can
+run just `npm run test:eslint`).
+
+To fix them, you should:
+
+1. In `playwright.config.ts`, remove the unused variable
+1. In `store.js`, by telling yourself that the rule of no return in constructor is stupid and you want to allow it,
+   so disable it in the configuration.
+1. In `app.js`, by changing the `e` variable to `_e` and adding a rule that allows unused variables with `_`
+   - Hint: configure the `no-unused-vars` rule in the `rules` part of the configuration
+
+## 2 - Add Prettier to ESLint
+
+Make it so that all prettier problems are eslint problems and can be autofixed with `Ctrl+Shift+.`. You
+can use the package `eslint-plugin-prettier` for that. Read its readme to see what to do.
+
+## 3 - Alternatively, add Prettier as another type of test to `npm test`
+
+Remove the previous plugin and make it so that `npm test` checks that all files conform to prettier using
+`prettier --check .` (don't forget to `npm install --save-dev prettier`).
