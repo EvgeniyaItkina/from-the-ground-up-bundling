@@ -19,14 +19,14 @@ const server = net.createServer(async (socket) => {
 HTTP/1.0 200 OK
 Content-Type: text/html
 
-<html>
-  <body>Hello, world: <img src="https://http.cat/images/200.jpg"></body>
-</html>
   `
-      .trim()
+      .trimStart()
+      // translate to HTTP protocol line terminator (we're assuming Linux OS here)
       .split('\n')
       .join('\r\n')
   )
+
+  socket.write('this is not the content you are looking for')
 
   socket.end()
 })

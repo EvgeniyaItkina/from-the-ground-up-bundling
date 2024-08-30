@@ -12,20 +12,26 @@ const server = net.createServer(async (socket) => {
   const finalPath = requestPath === '/' ? 'index.html' : requestPath
 
   try {
-    const html = readFileSync(join('public', finalPath), 'utf8')
+    const fileBuffer = readFileSync(join('public', finalPath))
 
     socket.write(
       `
 HTTP/1.0 200 OK
 Content-Type: text/html
 
-${html}`
-        .trim()
+`
+        .trimStart()
         .split('\n')
         .join('\r\n')
     )
+
+    socket.write(fileBuffer)
   } catch (err) {
-    socket.write(`HTTP/1.0 404 Not Found\n\r\n\rFile not found`)
+    if (err.code === 'ENOENT') {
+      socket.write(`HTTP/1.0 404 Not Found\n\r\n\rFile not found`)
+    } else {
+      throw err
+    }
   }
 
   socket.end()

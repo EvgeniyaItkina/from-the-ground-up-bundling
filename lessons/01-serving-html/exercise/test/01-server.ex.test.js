@@ -3,9 +3,9 @@ import {expect} from 'expect'
 import {$} from 'execa'
 import retry from 'p-retry'
 
-describe('01-server.x.js', () => {
+describe('01-server.ex.js', () => {
   before(async () => {
-    const serverProcess = $$`node ./src/01-server.x.js`
+    const serverProcess = $$`node ./src/01-server.ex.js`
     serverProcess.unref()
 
     // wait till it's listening
@@ -32,6 +32,16 @@ describe('01-server.x.js', () => {
     const html = await fetch('http://localhost:3000/other.html').then((res) => res.text())
 
     expect(html).toMatch(/html.*body.*h1.*Other page.*a href.*\/"/s)
+  })
+
+  it('should serve the correct image', async () => {
+    const catBuffer = await fetch('http://localhost:3000/cat.webp')
+      .then((res) => res.blob())
+      .then((blob) => blob.arrayBuffer())
+
+    expect(new Uint8Array(catBuffer).slice(0, 10)).toStrictEqual(
+      new Uint8Array(await readFile('public/cat.webp')).slice(0, 10)
+    )
   })
 
   it('should serve a 404 for non-existing files', async () => {
