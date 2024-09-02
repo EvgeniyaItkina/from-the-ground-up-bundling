@@ -1,15 +1,32 @@
 import {test, expect} from '@playwright/test'
+import killPort from 'kill-port'
+import {$} from 'execa'
+import retry from 'p-retry'
+
+const exerciseDir = `../${process.env.EX_DIR ?? 'exercises'}`
+
+const $$ = $({stdio: 'ignore', cwd: exerciseDir})
+
+test.beforeAll(() => $$`npm ci`)
+
+test.beforeAll(async () => {
+  await killPort(3000).catch(() => {})
+  $$`npm run start`.catch(() => {})
+
+  // wait till it's listening
+  await retry(() => fetch('http://localhost:3000').then((res) => res.text()), {minTimeout: 50})
+})
 
 // This test passes even here because it's very difficult to test parallelism
-test('06-todomvc', theTest(false))
-test('06-todomvc (bundled)', theTest(true))
+test(`06-todomvc - ${exerciseDir}`, theTest(false))
+test(`06-todomvc - ${exerciseDir} (bundled)`, theTest(true))
 
 function theTest(isBundled) {
   return async ({page}) => {
-    const networkEvents = [];
-    page.on('request', request => networkEvents.push(request.url()))
+    const networkEvents = []
+    page.on('request', (request) => networkEvents.push(request.url()))
 
-    await page.goto(`http://localhost:3000/06-todomvc/${isBundled ? '?bundled' : ''}`)
+    await page.goto(`/${isBundled ? '?bundled' : ''}`)
 
     await expect(page.getByRole('heading')).toContainText('todos')
 
@@ -48,4 +65,3 @@ function theTest(isBundled) {
     }
   }
 }
-

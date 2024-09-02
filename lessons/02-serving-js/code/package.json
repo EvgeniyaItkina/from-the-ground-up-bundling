@@ -1,10 +1,6 @@
 {
-  "name": "02-serving-js",
   "private": true,
-  "version": "1.0.0",
-  "description": "",
   "type": "module",
-  "main": "index.js",
   "scripts": {
     "postinstall": "ln -sf ../../node_modules public/03-serving-script-module-js && ln -sf ../../node_modules public/04-serving-common-js-badly",
     "start:01": "serve public/01-serving-script-js",
@@ -12,15 +8,11 @@
     "start:03": "serve public/03-serving-script-module-js",
     "start:04": "serve public/04-serving-common-js-badly",
     "start:05": "serve public/05-serving-common-js-goodly",
-    "start:06": "serve public/06-todomvc",
-    "test": "playwright test"
+    "start:06": "serve public/06-todomvc"
   },
-  "keywords": [],
-  "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@playwright/test": "^1.46.1",
-    "@types/node": "^22.5.1",
+    "@types/node": "^22.5.2",
     "serve": "^14.2.3"
   },
   "dependencies": {

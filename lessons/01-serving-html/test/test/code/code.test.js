@@ -9,8 +9,7 @@ describe('code', () => {
 
   before(async () => {
     await killPort(3000).catch(() => {})
-    const serverProcess = $$`node ./src/01-server.js`
-    serverProcess.unref()
+    $$`node ./src/01-server.js`
 
     // wait till it's listening
     await retry(() => fetch('http://localhost:3000').then((res) => res.text()), {minTimeout: 50})
