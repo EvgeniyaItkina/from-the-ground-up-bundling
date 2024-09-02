@@ -26,7 +26,7 @@ Content-Type: text/html
     )
 
     socket.write(fileBuffer)
-  } catch (err) {
+  } catch (/**@type {any} */ err) {
     if (err.code === 'ENOENT') {
       socket.write(`HTTP/1.0 404 Not Found\n\r\n\rFile not found`)
     } else {

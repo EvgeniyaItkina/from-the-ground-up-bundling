@@ -1,20 +1,22 @@
 import {before, describe, it} from 'node:test'
+import {readFile} from 'node:fs/promises'
+import {join} from 'node:path'
 import {expect} from 'expect'
 import {$} from 'execa'
 import retry from 'p-retry'
-import {readFile} from 'node:fs/promises'
+import killPort from 'kill-port'
 
-describe('01-server.ex.js', () => {
+const exerciseDir = `../${process.env.EX_DIR ?? 'exercises'}`
+
+describe(`exercise ${exerciseDir}`, () => {
+  before(() => $$`npm ci`)
+
   before(async () => {
-    const serverProcess = $$`node ./src/01-server.ex.js`
-    serverProcess.unref()
+    await killPort(3000).catch(() => {})
+    $$`npm start`
 
     // wait till it's listening
-    await retry(() => fetch('http://localhost:3000').then((res) => res.text()), {
-      retries: 20,
-      minTimeout: 100,
-      factor: 10,
-    })
+    await retry(() => fetch('http://localhost:3000').then((res) => res.text()), {minTimeout: 50})
   })
 
   it('should serve the correct home page when serving root', async () => {
@@ -41,7 +43,7 @@ describe('01-server.ex.js', () => {
       .then((blob) => blob.arrayBuffer())
 
     expect(new Uint8Array(catBuffer).slice(0, 10)).toStrictEqual(
-      new Uint8Array(await readFile('public/cat.webp')).slice(0, 10)
+      new Uint8Array(await readFile(join(exerciseDir, 'public/cat.webp'))).slice(0, 10)
     )
   })
 
@@ -52,4 +54,4 @@ describe('01-server.ex.js', () => {
   })
 })
 
-const $$ = $({stdio: 'ignore'})
+const $$ = $({stdio: 'ignore', all: true, cwd: exerciseDir})

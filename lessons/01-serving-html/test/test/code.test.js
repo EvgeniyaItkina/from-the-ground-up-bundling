@@ -2,18 +2,18 @@ import {before, describe, it} from 'node:test'
 import {expect} from 'expect'
 import {$} from 'execa'
 import retry from 'p-retry'
+import killPort from 'kill-port'
 
-describe('01-server.js', () => {
+describe('code', () => {
+  before(() => $$`npm ci`)
+
   before(async () => {
+    await killPort(3000).catch(() => {})
     const serverProcess = $$`node ./src/01-server.js`
     serverProcess.unref()
 
     // wait till it's listening
-    await retry(() => fetch('http://localhost:3000').then((res) => res.text()), {
-      retries: 20,
-      minTimeout: 100,
-      factor: 10,
-    })
+    await retry(() => fetch('http://localhost:3000').then((res) => res.text()), {minTimeout: 50})
   })
 
   it('should serve the correct HTML when getting root', async () => {
@@ -30,4 +30,4 @@ describe('01-server.js', () => {
   })
 })
 
-const $$ = $({stdio: 'ignore'})
+const $$ = $({stdio: 'ignore', cwd: '../code'})

@@ -1,8 +1,8 @@
 {
-  "private": true,
   "type": "module",
+  "private": true,
   "scripts": {
-    "start": "node ./src/01-server.js"
+    "start": "node ./src/01-server.ex.js"
   },
   "license": "MIT",
   "devDependencies": {
