@@ -7,6 +7,7 @@ import retry from 'p-retry'
 import killPort from 'kill-port'
 
 const exerciseDir = `../${process.env.EX_DIR ?? 'exercises'}`
+const $$ = $({stdio: 'ignore', all: true, cwd: exerciseDir})
 
 describe(`exercise ${exerciseDir}`, () => {
   before(() => $$`npm ci`)
@@ -53,5 +54,3 @@ describe(`exercise ${exerciseDir}`, () => {
     expect(html).toMatch(/404Not Found/s)
   })
 })
-
-const $$ = $({stdio: 'ignore', all: true, cwd: exerciseDir})

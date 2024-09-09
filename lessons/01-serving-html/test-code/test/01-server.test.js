@@ -4,6 +4,8 @@ import {$} from 'execa'
 import retry from 'p-retry'
 import killPort from 'kill-port'
 
+const $$ = $({stdio: 'ignore', cwd: '../code'})
+
 describe('code', () => {
   before(() => $$`npm ci`)
 
@@ -28,5 +30,3 @@ describe('code', () => {
     expect(rootHtml).toEqual(nonRootHtml)
   })
 })
-
-const $$ = $({stdio: 'ignore', cwd: '../code'})

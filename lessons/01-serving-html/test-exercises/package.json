@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test --test-force-exit --test-concurrency=1"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/kill-port": "^2.0.3",
+    "@types/node": "^22.5.2",
+    "execa": "^9.3.1",
+    "expect": "^29.7.0",
+    "kill-port": "^2.0.1",
+    "p-retry": "^6.2.0"
+  }
+}
