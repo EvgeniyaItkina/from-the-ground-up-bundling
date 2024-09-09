@@ -3,20 +3,10 @@
   "version": "1.0.0",
   "description": "A workshop teaching frontend from first principles",
   "main": "index.js",
-  "scripts": {
-    "postinstall": "concurrently 'npm:install:*'",
-    "clean": "rm-j -rf \"./**/node_modules\"",
-    "install:01": "cd lessons/01-serving-html && npm install",
-    "install:02": "cd lessons/02-serving-js && npm install",
-    "install:03": "cd lessons/03-adding-lint && npm install",
-  },
+  "scripts": {},
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "concurrently": "^8.2.2"
-  },
-  "dependencies": {
-    "@unixcompat/rm.js": "^3.0.0"
-  }
+  "devDependencies": {},
+  "dependencies": {}
 }
