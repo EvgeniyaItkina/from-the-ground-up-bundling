@@ -10,7 +10,6 @@
     "test": "concurrently \"npm:test:*\"",
     "test:playwright": "playwright test",
     "test:eslint": "eslint .",
-    "test:node": "node --test test/node",
     "test:prettier": "prettier --check ."
   },
   "keywords": [],

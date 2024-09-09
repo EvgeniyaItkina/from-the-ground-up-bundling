@@ -5,7 +5,7 @@ import retry from 'p-retry'
 
 const $$ = $({stdio: 'ignore', cwd: '../code'})
 
-test.beforeAll(() => $$`npm ci`)
+test.beforeAll(() => $$`npm install`)
 
 test.beforeAll(async () => {
   await killPort(3000).catch(() => {})

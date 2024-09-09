@@ -1,4 +1,4 @@
-# 03 Adding ESLint Exercises
+# 03 Adding ESLint
 
 ## 1 What is a linter
 
@@ -100,8 +100,8 @@ To fix them, you should:
 
 ## 2 - Add Prettier to ESLint
 
-Make it so that all prettier problems are eslint problems and can be autofixed with `Ctrl+Shift+.`. You
-can use the package `eslint-plugin-prettier` for that. Read its readme to see what to do.
+Make it so that all prettier problems are eslint problems and can be "ESlint: fix all autofixed problems" (in VSCode).
+You can use the package `eslint-plugin-prettier` for that. Read its readme to see what to do.
 
 ## 3 - Alternatively, add Prettier as another type of test to `npm test`
 

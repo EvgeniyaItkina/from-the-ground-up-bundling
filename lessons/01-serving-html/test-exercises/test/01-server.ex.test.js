@@ -10,7 +10,7 @@ const exerciseDir = `../${process.env.EX_DIR ?? 'exercises'}`
 const $$ = $({stdio: 'ignore', all: true, cwd: exerciseDir})
 
 describe(`exercise ${exerciseDir}`, () => {
-  before(() => $$`npm ci`)
+  before(() => $$`npm install`)
 
   before(async () => {
     await killPort(3000).catch(() => {})

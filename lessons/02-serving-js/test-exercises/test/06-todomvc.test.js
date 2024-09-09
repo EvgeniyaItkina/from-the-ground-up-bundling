@@ -7,7 +7,7 @@ const exerciseDir = `../${process.env.EX_DIR ?? 'exercises'}`
 
 const $$ = $({stdio: 'ignore', cwd: exerciseDir})
 
-test.beforeAll(() => $$`npm ci`)
+test.beforeAll(() => $$`npm install`)
 
 test.beforeAll(async () => {
   await killPort(3000).catch(() => {})

@@ -7,7 +7,7 @@ import killPort from 'kill-port'
 const $$ = $({stdio: 'ignore', cwd: '../code'})
 
 describe('code', () => {
-  before(() => $$`npm ci`)
+  before(() => $$`npm install`)
 
   before(async () => {
     await killPort(3000).catch(() => {})
