@@ -13,6 +13,7 @@ Header1: ...
 Header2: ...
 
 ```
+
 1. The first line is the "status" line, consisting of three fields, divided by spaces:
    - The method: in this case `GET`
    - The path: in this case `/`
@@ -44,9 +45,20 @@ Content-Length: nnn
    1. But there are other ways, like the `Transfer-Encoding: chunked` header, which is a way to send the body in chunks
 1. In the exercise, we'll use the simplest way, which is to use HTTP/1.0.
 
-## 2 - Writing a web server (`01-web-server.js`)
+## 2 - Writing a web server (`01-server.js`)
 
 This server always returns the same HTML to the browser
+
+### 3 ESM vs CommonJS
+
+- The server `01-server.js` is a Node.js program.
+  As such, it supports two module systems—CommonJS and ESM—just like any Node.js program.
+- Remember: CommonJS files use `require/module.exports` and ESM files use `import/export`.
+- In Node.js, a `.mjs` file means that it is ESM, and a `.cjs` file means that it is a CommonJS file, and `.js`
+  is by default CommonJS, unless the `package.json` has a `type: module` property.
+- Ours has `type: module`, because this is the recommended way today to start new code in Node.js (and, as
+  we'll see, browser code). Why? Because it bears the most resemblance to how browsers see modules.
+- So our `01-server.js` is an ESM file, and so uses `import` to import various packages.
 
 ## Exercises
 

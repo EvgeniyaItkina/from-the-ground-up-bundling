@@ -24,17 +24,6 @@ the flat configuration in this course because (i) it really is nicer, and (ii) t
 - The configuration for ESLint resides in a file named `eslint.config.js`. The existence of this file
   implies FlatConfig.
 
-### 3.1 ESM vs CommonJS
-- ESLint is a Node.js program. As such, it supports two module systems—CommonJS and ESM—just like any Node.js
-  program.
-- Remember: CommonJS files use `require/module.exports` and ESM files use `import/export`.
-- In Node.js, a `.mjs` file means that it is ESM, and a `.cjs` file means that it is a CommonJS file, and `.js`
-  is by default CommonJS, unless the `package.json` has a `type: module` property.
-- Ours has `type: module`, because this is the recommended way today to start new code in Node.js (and, as
-  we'll see, browser code). Why? Because it bares the most resemblance to how browsers see modules.
-- So our `eslint.config.js` is an ESM file, and so uses `export default` to export the configuration, and uses
-  `import` to import various things it needs for configuration.
-
 ## 4 How FlatConfig works
 
 - The idea behind flat config is this:
