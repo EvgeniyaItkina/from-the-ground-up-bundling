@@ -45,13 +45,6 @@ the flat configuration in this course because (i) it really is nicer, and (ii) t
 - Really nice! They use standard import/export and a very simple definition of configuration to do everything
   the old system did in a complex way ("plugins" and "overrides" and "parserOptions" and others).
 
-## Note
-
-- If you're using the VSCode ESLint plugin (and you should!) you have to turn on the FlatConfig check box:
-  - Press `Cmd+,` or `Ctrl+,` to open the settings
-  - Write "flat config" in the search
-  - Check the checkbox of the found option to enable it
-
 ## 4 Building Frontend ESLint configurations
 
 - First off, let's make it plain: _all_ frontend apps include both Browser code and Node.js code!
@@ -65,7 +58,7 @@ the flat configuration in this course because (i) it really is nicer, and (ii) t
 
 ## 5 ESLint is a test
 
-- The way I view it, there is nothing different between Prettier, ESLint, PlayWright, and Jest. They are all
+- The way I view it, there is nothing different between Prettier, ESLint, PlayWright, and Node:test. They are all
   tests. Which is why I want `npm test` to run them.
 - The way I do it is simple:
   - Have `test:eslint` and `test:playwright` and others
