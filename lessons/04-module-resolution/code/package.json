@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "node src/module-resolution.js"
+  },
+  "dependencies": {
+    "@types/node": "^22.5.2"
+  },
+  "devDependencies": {
+  }
+}
