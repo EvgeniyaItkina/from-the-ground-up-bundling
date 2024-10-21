@@ -7,4 +7,6 @@ import imported3 from 'bare-specifier-with-exports/deeply-linked'
 
 console.log('cjs-folder/relative-module.js');
 
-export default 'cjs-folder/relative-module.js';
+import './esm-importing-cjs.cjs'
+
+export default {};

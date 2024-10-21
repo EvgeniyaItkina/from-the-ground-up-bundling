@@ -37,6 +37,17 @@
 - Node.js uses _only_ the file extension. It does not look in the file and say - "ooh, there's an `import` so it
   must be ESM". It's all about the file extension.
 
+- Examples:
+- [Resolving `require` via `.cjs` extension (line #10)](./code/src/esm-folder/relative-module.mjs#10)
+- [Resolving `require` via `.mjs` extension (line #6)](./code/src/module-resolution.js#6)
+- [Resolving `import` via `.js` and `type: module` (line #3)](./code/src/esm-folder/node_modules/bare-specifier-with-main/package.json#3)
+
+
+  - Bare specifiers
+    - [Resolving `require` via bare-specifier and `main` field (line #2)](./code/src/cjs-folder/relative-module.js#2)
+    - [Resolving deeply-linked `require` via bare-specifier and `main` field (line #4)](./code/src/cjs-folder/relative-module.js#4)
+    - [Resolving deeply-linked `require` via bare-specifier and `exports` field (line #6)](./code/src/cjs-folder/relative-module.js#6)
+
 ## Module resolution for relative specifiers when using `import`
 
 - This is easy. You just resolve the path using the regular path resolution, and voila!
@@ -50,6 +61,8 @@
 - That's true, but that's because the _bundler_ is doing the resolution, not Node.js. The module resolution there
   is _different_ than what Node.js does. We will be talking about module resolution in browsers in a separate
   lesson. For now, let's concentrate on Node.js.
+
+- Example: [Importing via relative specifier (line #10)](./code/src/esm-folder/relative-module.mjs#10)
 
 ## Module resolution for absolute specifiers when using `import`
 
@@ -68,6 +81,9 @@
   way to the root of the filesystem.
 - What happens if the specifier is `lodash/src/cloneDeep.js`? This will work by ignoring the `main` field
   in the `package.json`. But it will _not_ work once there is an `exports` field, which blocks such deep links.
+
+- Example: [Importing via bare-specifier and `main` field (line #2)](./code/src/esm-folder/relative-module.mjs#2)
+- Example: [Importing deeply-linked module via bare-specifier and `main` field (line #4)](./code/src/esm-folder/relative-module.mjs#4)
 
 ### `exports`
 
@@ -106,12 +122,19 @@
 - Remember this, because bundlers use this "condition" thingie. But if you're only using ESM in Node.js,
   then you don't need it.
 
+- Example: [Importing deeply-linked module via bare-specifier and `exports` field (line #6)](./code/src/esm-folder/relative-module.mjs#6)
+
+
 ## Module resolution for relative specifiers when using `require`
 
 - Very similar to ESM, but the file extension is optional. If you don't have a file extension, Node.js will try
   to guess it. It will look for `.cjs`, then `.js`, then `.json`, then `.node`.
 - Done? Ha!
 - It will also look for a folder with the same name, and look for `index.cjs/js/json`.
+
+- Example: [Requiring module via relative specifier without extension (line #3)](./code/src/module-resolution.js#3)
+- Example: [Requiring module via relative specifier with extension (line #4)](./code/src/module-resolution.js#4)
+- Example: [Requiring module via relative specifier of a folder with `index.js` (line #5)](./code/src/module-resolution.js#5)
 
 ## Module resolution for absolute specifiers when using `require`
 
@@ -121,7 +144,10 @@
 ## Module resolution for bare specifiers when using `require`
 
 - This is exactly the same as for ESM! Including the use of `exports`.
-- One small difference - with deep links, if there is no
+
+- Example: [Requiring via bare-specifier and `main` field (line #2)](./code/src/cjs-folder/relative-module.js#2)
+- Example: [Requiring deeply-linked module via bare-specifier and `main` field (line #4)](./code/src/cjs-folder/relative-module.js#4)
+- Example: [Requiring deeply-linked module via bare-specifier and `exports` field (line #6)](./code/src/cjs-folder/relative-module.js#6)
 
 ## Summary
 
@@ -136,7 +162,6 @@
 - If there is an `exports` field, deep linking not via `exports` is not allowed, otherwise it is.
 - The `exports` can specify a set of paths and the resolution to them, and can use "conditions" to specify different
   resolutions based on whether we are `import`-ing or `require`-ing the module.
-
 
 ## Exercises
 
