@@ -1,0 +1,6 @@
+declare module 'a-package/fox'
+declare module 'a-package/jumped'
+declare module 'b-package/b-folder/over.js'
+declare module 'c-package'
+declare module 'd-package'
+declare module 'ck-module'
