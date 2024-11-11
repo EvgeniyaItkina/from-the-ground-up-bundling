@@ -8,18 +8,17 @@ A workshop teaching bundling from first principles
 1. [Serving JavaScript](./lessons/02-serving-js/README.md): the various ways a browser loads and executes JavaScript
 1. [Browser code vs Node.js code](./lessons/03-browser-vs-nodejs): the difference between browser and Node.js code
 1. [Module resolution in Node.js](./lessons/04-module-resolution/README.md): how Node.js runs code and imports ESM and CJS
-1. [Packaging](./lessons/05-packaging/README.md): building packages
-1. [Bundling code](./lessons/06-bundling/README.md): how to bundle our code for the browser, as an alternative
+1. [Bundling code](./lessons/05-bundling/README.md): how to bundle our code for the browser, as an alternative
    to native ESM modules
-1. [Module resolution in bundlers](./lessons/07-module-resolution-bundlers): non-modern packages and how
+1. [Module resolution in bundlers](./lessons/06-module-resolution-bundlers): non-modern packages and how
    bundlers treat them
-1. [Supporting Typescript](./lessons/08-typescript/README.md): add TypeScript to our project
-1. [Module resolution in Typescript](./lessons/09-module-resolution-typescript/README.md): how TypeScript resolves modules
-1. [Typescript in packages](./lessons/10-typescript-in-packages/README.md): how does typescript work in packages
-1. [CSS Modules](./lessons/11-css-modules/README.md): how to use CSS modules to scope our CSS
-1. [Bundling resources](./lessons/12-bundling-resources/README.md): how to bundle our resources (images, fonts, etc.)
+1. [Supporting Typescript](./lessons/07-typescript/README.md): add TypeScript to our project
+1. [Module resolution in Typescript](./lessons/08-module-resolution-typescript/README.md): how TypeScript resolves modules
+1. [Typescript in packages](./lessons/09-typescript-in-packages/README.md): how does typescript work in packages
+1. [CSS Modules](./lessons/10-css-modules/README.md): how to use CSS modules to scope our CSS
+1. [Bundling resources](./lessons/11-bundling-resources/README.md): how to bundle our resources (images, fonts, etc.)
    using bundlers
-1. [Module resolution in monorepos](./lessons/13-module-resolution-monorepos/README.md): how bundlers resolve modules
+1. [Module resolution in monorepos](./lessons/12-module-resolution-monorepos/README.md): how bundlers resolve modules
    in monorepos
 
 ## Using this repo
