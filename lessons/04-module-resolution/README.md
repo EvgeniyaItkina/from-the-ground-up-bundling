@@ -165,5 +165,4 @@
 
 ## Exercises
 
-- Look at the code in `resolve.js`. Make it work.
-  (it should use ESM and CJS and .cjs and .mjs and all sorts of everything...)
+- Make `npm start` write "the quick brown fox jumped over the lazy dog"
