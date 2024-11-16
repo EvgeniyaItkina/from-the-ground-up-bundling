@@ -1,10 +1,48 @@
-import {once} from 'node:events'
+import { once } from 'node:events'
 import net from 'node:net'
+import { readFile } from 'node:fs/promises';
 
 const server = net.createServer(async (socket) => {
   const request = await once(socket, 'data')
   console.log(request.toString())
 
+  const rows = request.toString().split('\r\n');
+  const statusline = rows[0];
+  const statuslinefilds = statusline.split(' ');
+  const path = statuslinefilds[1].slice(1);
+  
+  const extension = path.split('.')[1]
+  console.log(extension);
+  
+
+  let contentType = 'application/octet-stream'
+  
+  if (extension === 'html') {
+    contentType = 'text/html'
+  } else if (extension === 'webp') {
+    contentType = 'image/webp'
+  }
+
+  let contents
+  try {
+    contents = await readFile('public/' + path);
+    console.log('********', path, contents.length)
+  } catch {
+    socket.write(
+      `
+HTTP/1.0 200 OK
+Content-Type: text/html
+
+  `
+        .trimStart()
+        // translate to HTTP protocol line terminator (we're assuming Linux OS here)
+        .split('\n')
+        .join('\r\n')
+    )
+    socket.write('hi')
+    socket.end();
+    return
+  }
   // Instead of writing to the socket directly, do this:
   // 1. Get the request's first line
   // 2. Get the path in that first line
@@ -17,7 +55,7 @@ const server = net.createServer(async (socket) => {
   socket.write(
     `
 HTTP/1.0 200 OK
-Content-Type: text/html
+Content-Type: ${contentType}
 
   `
       .trimStart()
@@ -26,7 +64,7 @@ Content-Type: text/html
       .join('\r\n')
   )
 
-  socket.write('this is not the content you are looking for')
+  socket.write(contents)
 
   socket.end()
 })
