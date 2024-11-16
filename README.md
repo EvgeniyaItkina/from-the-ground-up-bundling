@@ -14,12 +14,13 @@ A workshop teaching bundling from first principles
    bundlers treat them
 1. [Supporting Typescript](./lessons/07-typescript/README.md): add TypeScript to our project
 1. [Module resolution in Typescript](./lessons/08-module-resolution-typescript/README.md): how TypeScript resolves modules
-1. [Typescript in packages](./lessons/09-typescript-in-packages/README.md): how does typescript work in packages
+1. [Supporting JSX](./lessons/09-jsx/README.md): add JSX to our project
 1. [CSS Modules](./lessons/10-css-modules/README.md): how to use CSS modules to scope our CSS
 1. [Bundling resources](./lessons/11-bundling-resources/README.md): how to bundle our resources (images, fonts, etc.)
    using bundlers
 1. [Module resolution in monorepos](./lessons/12-module-resolution-monorepos/README.md): how bundlers resolve modules
    in monorepos
+1. [Chunking](./lessons/01-serving-html/README.md): splitting the bundle into chunks
 
 ## Using this repo
 

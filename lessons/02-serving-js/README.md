@@ -1,4 +1,4 @@
-# 02 - Serving JavaScript
+hs/# 02 - Serving JavaScript
 
 * TodoMVC code copied (and modified) from [1Marc](https://github.com/1Marc/modern-todomvc-vanillajs). Thanks!
 

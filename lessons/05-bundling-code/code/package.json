@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {},
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.5.2",
+    "esbuild": "^0.24.0"
+  }
+}
